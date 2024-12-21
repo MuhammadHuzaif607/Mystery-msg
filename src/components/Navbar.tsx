@@ -3,10 +3,13 @@ import { useSession, signOut } from 'next-auth/react';
 import { User } from 'next-auth';
 import Link from 'next/link';
 import { Button } from './ui/button';
+import { useRouter } from 'next/navigation';
 
 const Navbar = () => {
   const { data: session } = useSession();
+  const router = useRouter();
   const user: User = session?.user as User;
+
   return (
     <header className="shadow-md">
       <div className="container mx-auto ">
@@ -19,6 +22,7 @@ const Navbar = () => {
                 <Button
                   onClick={() => {
                     signOut();
+                    router.push('/');
                   }}
                   className="ml-6"
                 >
