@@ -7,6 +7,8 @@ const usernameQuerySchema = z.object({
   username: usernameValidation,
 });
 
+export const dynamic = 'force-dynamic'; // Mark this route as dynamic
+
 export async function GET(req: Request) {
   await dbConnect();
   try {
